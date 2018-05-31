@@ -6,13 +6,13 @@ exports.run = function(spawn) {
     if (calcrole != null)
     { 
         if(calcrole == 'emergencyminer') {
-            var newName = Game.spawns['Spawn1'].createCreep([WORK,MOVE,CARRY], undefined, {role: 'miner'});
+            var newName = Game.spawns['Spawn1'].spawnCreep([WORK,MOVE,CARRY], undefined, {role: 'miner'});
             console.log('Spawning new'+roler+': ' + newName);
         }
         else{
         
             var body = selectbody();
-            var newName = Game.spawns['Spawn1'].createCreep(body, undefined, {role: calcrole});
+            var newName = Game.spawns['Spawn1'].spawnCreep(body, undefined, {role: calcrole});
                 console.log('Spawning new '+calcrole+': ' + newName);
         
 
