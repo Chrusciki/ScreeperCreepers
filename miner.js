@@ -67,8 +67,8 @@ var roleminer = {
                else 
                {
                 //   creep.moveTo(Game.spawns.Spawn1.pos);
-                   roleprobe.run(creep);
-                   creep.say('miner');
+                //   roleprobe.run(creep);
+                //   creep.say('probe');
                }
                
              }
