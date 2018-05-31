@@ -5,14 +5,15 @@ exports.run = function(spawn) {
     // adjust these values to not exceed cpu useage
     if (calcrole != null)
     { 
+        var newName = 'creep' + Game.time;
         if(calcrole == 'emergencyminer') {
-            var newName = Game.spawns['Spawn1'].spawnCreep([WORK,MOVE,CARRY], undefined, {role: 'miner'});
+            newName = Game.spawns['Spawn1'].spawnCreep([WORK, MOVE, CARRY], newName, { memory: {role: 'miner'}});
             console.log('Spawning new'+role+': ' + newName);
         }
         else{
         
             var body = selectbody();
-            var newName = Game.spawns['Spawn1'].spawnCreep(body, undefined, {role: calcrole});
+             newName = Game.spawns['Spawn1'].spawnCreep(body, newName, {memory: {role: calcrole}});
                 console.log('Spawning new '+calcrole+': ' + newName);
         
 
