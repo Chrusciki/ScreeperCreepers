@@ -1,4 +1,5 @@
 var roleupgrader = require('upgrader');
+var roleprobe = require('probe');
 var utilities = require('extra');
 
 var roleminer = {
@@ -65,7 +66,9 @@ var roleminer = {
                }
                else 
                {
-                   creep.moveTo(Game.spawns.Spawn1.pos);
+                //   creep.moveTo(Game.spawns.Spawn1.pos);
+                   roleminer.run(creep);
+                   creep.say('miner');
                }
                
              }
