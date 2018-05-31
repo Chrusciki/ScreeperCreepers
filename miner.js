@@ -1,5 +1,5 @@
 var roleupgrader = require('upgrader');
-var roleprobe = require('probe');
+//var roleprobe = require('probe');
 var utilities = require('extra');
 
 var roleminer = {
