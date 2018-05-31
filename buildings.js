@@ -21,9 +21,7 @@ exports.run = function(spawn) {
     }
     else
     {
-        console.log('dafaq')
         console.log('No creep needed, spawner afk');
-
     }
 }
 
@@ -116,7 +114,8 @@ function selectrole() {
             }
             else
             {
-                 if(Game.spawns['Spawn1'].room.find(FIND_SOURCES).length > 5)
+                // number of sources in the room
+                 if(Game.spawns['Spawn1'].room.find(FIND_SOURCES).length > 1)
                  {
                     var tempmax =  maxprobe;
                  }

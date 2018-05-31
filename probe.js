@@ -9,11 +9,11 @@ var roleprobe = {
 
 	    if(creep.memory.building && creep.carry.energy == 0) {
             creep.memory.building = false;
-            creep.say('🔄 harvest');
+            creep.say('harvest');
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
 	        creep.memory.building = true;
-	        creep.say('🚧 build');
+	        creep.say('build');
 	    }
 	//    var buildtargets = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES,{
 	//	               filter: (structure) => {
@@ -53,7 +53,7 @@ var roleprobe = {
 	                else
 	                {
 	                    roleminer.run(creep);
-	                    creep.say('🔄miner');
+	                    creep.say('miner');
 	                }
 	                
 	            }
