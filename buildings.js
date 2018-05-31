@@ -7,7 +7,7 @@ exports.run = function(spawn) {
     { 
         if(calcrole == 'emergencyminer') {
             var newName = Game.spawns['Spawn1'].spawnCreep([WORK,MOVE,CARRY], undefined, {role: 'miner'});
-            console.log('Spawning new'+roler+': ' + newName);
+            console.log('Spawning new'+role+': ' + newName);
         }
         else{
         
