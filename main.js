@@ -22,7 +22,9 @@ module.exports.loop = function () {
 
     //create minions
     buildings.run(Game.spawns.Spawn1);
-    buildings.PlanRoom();
+    if (Memory.roomplannerroadssources ==0){
+        buildings.PlanRoom();
+    }
 
 
 

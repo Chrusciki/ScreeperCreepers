@@ -33,6 +33,8 @@ exports.PlanRoom = function (spawn) {
     for (var i = 0; i < end.length; i++) {
         planRoadsBetween(start, end[i]);
     }
+    Memory.roomplannerroadssources = 1;
+
 }
 
 function selectbody() {
