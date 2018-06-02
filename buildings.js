@@ -103,7 +103,7 @@ workcount = Math.floor(energyAvailable/workcost*workratio)+1;
 function selectrole() {
     var maxminer    = 2;
     var maxupgrader = 1;
-    var maxprobe    = 2;
+    var maxprobe    = 3;
     // gather creep types in game. 
     var miner = _.filter(Game.creeps, (creep) => creep.memory.role == 'miner');
     // print to console the number of each creep in the game.
