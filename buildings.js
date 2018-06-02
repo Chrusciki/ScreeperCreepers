@@ -25,6 +25,16 @@ exports.run = function(spawn) {
     }
 }
 
+exports.PlanRoom = function (spawn) {
+
+    var start = Game.spawns['Spawn1'];
+    var end = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
+    var endpos = end[0].pos;
+    for (var i = 0; i < end.length; i++) {
+        planRoadsBetween(start, end[i]);
+    }
+}
+
 function selectbody() {
        var maxenergyforparts =500;
        
@@ -138,64 +148,24 @@ function selectrole() {
 }
 
 
+function planRoadsBetween(start, end) {
+    if (start.pos)
+        start = start.pos;
+    if (end.pos)
+        end = end.pos;
+    var path = PathFinder.search(start, { pos: end, range: 1 },
+        {
+            plainCost: 2,
+            swampCost: 2
+        });
 
-
-
-
-
-
-
-
-exports.placeroadsite =function(room,start,end) {
-    
-    var path = room.findPath(start, end, { ignoreCreeps: true, ignoreDestructibleStructures:true, ignoreRoads:true });
-    if(!path.length) return false;
-                var prev_i;
-                for(var i in path) // fix findPath (direction may be not correct, maybe bug)
-                {
-                    if(prev_i && path[i].x != path[prev_i].x && path[i].y != path[prev_i].y)
-                    {
-                        if     (path[i].x > path[prev_i].x && path[i].y > path[prev_i].y) path[prev_i].direction=BOTTOM_RIGHT;
-                        else if(path[i].x < path[prev_i].x && path[i].y > path[prev_i].y ) path[prev_i].direction=BOTTOM_LEFT;
-                        else if(path[i].x > path[prev_i].x && path[i].y > path[prev_i].y) path[prev_i].direction=BOTTOM_RIGHT;
-                        //else if(path[i].x < path[prev_i].x && path[i].y > path[prev_i].y ) path[prev_i].direction=BOTTOM_LEFT;
-                        //
-                        else if(path[i].x > path[prev_i].x && path[i].y < path[prev_i].y) path[prev_i].direction=TOP_RIGHT;
-                        else if(path[i].x < path[prev_i].x && path[i].y < path[prev_i].y ) path[prev_i].direction=TOP_LEFT;
-                        else if(path[i].x > path[prev_i].x && path[i].y < path[prev_i].y) path[prev_i].direction=TOP_RIGHT;
-                        else if(path[i].x < path[prev_i].x && path[i].y < path[prev_i].y ) path[prev_i].direction=TOP_LEFT;
-                        //else path[prev_i].direction=-1;
-                    }
-                    if(prev_i && path[i].x == path[prev_i].x && path[i].y != path[prev_i].y)
-                    {
-                        if (path[i].y > path[prev_i].y) path[prev_i].direction=BOTTOM;
-                        else path[prev_i].direction=TOP;
-                    }
-                    if(prev_i && path[i].x != path[prev_i].x && path[i].y == path[prev_i].y)
-                    {
-                        if (path[i].x < path[prev_i].x) path[prev_i].direction=LEFT;
-                        else path[prev_i].direction=RIGHT;
-                    }
-                    prev_i = i;
-                }
-                for(var i in path)
-                {
-                    //if( to.isEqualTo(path[i].x,path[i].y) ) continue;
-                    room.memory.flowGraph[to.x+"_"+to.y][path[i].x+"_"+path[i].y] = path[i].direction;
-                    room.memory.flowGraph[from.x+"_"+from.y][path[i].x+"_"+path[i].y] = reverse[path[i].direction];
-                    var result = room.createConstructionSite(path[i].x, path[i].y, STRUCTURE_ROAD);
-                }
-        //console.log( JSON.stringify(path) );
-        //console.log( JSON.stringify(from.room.memory.flowGraph) );
-        console.log(path);
-        return true;
+    if (!path.incomplete) {
+        for (let i = 0; i < path.path.length; i++) {
+            console.log(path.path[i]);
+            Game.spawns['Spawn1'].room.createConstructionSite(path.path[i], STRUCTURE_ROAD);
+        }
+    }
 };
-
-  //  for (var i = 0; i < patharry.array; i++) 
-     //   Game.spawns['Spawn1'].room.createConstructionSite(patharry[i].pos,STRUCTURE_ROAD);
-    // var path = 
-//}
-
 
 
 

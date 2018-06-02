@@ -22,12 +22,12 @@ module.exports.loop = function () {
 
     //create minions
     buildings.run(Game.spawns.Spawn1);
+    buildings.PlanRoom();
 
 
 
-
-
-   // buildings.placeroadsite(start,end);
+    
+   // buildings.placeroadsite(Game.spawns['Spawn1'].room,start,end);
     // fancy spawer text 
     // if need cpu useage delete this, its mostly useless
     if(Game.spawns['Spawn1'].spawning) {
