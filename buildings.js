@@ -35,7 +35,10 @@ exports.PlanRoom = function (spawn) {
         planRoadsBetween(start, end[i]);
     }
     Memory.roomplannerroadssources = 1;
-
+    start = Game.spawns['Spawn1'].room.find(FIND_CONTROLLERS);
+    for (var i = 0; i < end.length; i++) {
+        planRoadsBetween(start, end[i]);
+    }
 }
 
 function selectbody() {
