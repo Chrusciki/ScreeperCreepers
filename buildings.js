@@ -29,13 +29,13 @@ exports.run = function(spawn) {
 exports.PlanRoom = function (spawn) {
 
     var start = Game.spawns['Spawn1'];
-    var end = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
+    var end = Game.spawns['Spawn1'].room.find(STRUCTURE_CONTROLLER);
     var endpos = end[0].pos;
     for (var i = 0; i < end.length; i++) {
         planRoadsBetween(start, end[i]);
     }
     Memory.roomplannerroadssources = 1;
-    start = Game.spawns['Spawn1'].room.find(FIND_CONTROLLERS);
+    start = Game.spawns['Spawn1'].room.controller;
     for (var i = 0; i < end.length; i++) {
         planRoadsBetween(start, end[i]);
     }
