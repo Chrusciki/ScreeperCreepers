@@ -26,7 +26,7 @@ var roleprobe = {
 		if(creep.memory.building) {
 	    var buildtargets = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES,{
 		               filter: (structure) => {
-	                return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_ROAD || structure.structureType == STRUCTURE_LINK || structure.structureType == STRUCTURE_CONTAINER)}});
+						   return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_ROAD || structure.structureType == STRUCTURE_LINK || structure.structureType == STRUCTURE_CONTAINER || structure.structureType == STRUCTURE_TOWER)}});
 
 	            if(buildtargets) {
 	            	// clear repair flag
