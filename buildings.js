@@ -42,7 +42,7 @@ exports.PlanRoom = function (spawn) {
 }
 
 function selectbody() {
-       var maxenergyforparts =300;
+       var maxenergyforparts = 600;
        
        var bodyparts = [];
        var carrycount = 0;
@@ -60,10 +60,10 @@ function selectbody() {
     var energyAvailable = 0;
     var energymax = 0;
     
-    energyAvailable += Game.spawns.Spawn1.energyCapacity;
+    energyAvailable += Game.spawns.Spawn1.energy;
     _.filter(Game.structures, function(structure){
     if (structure.structureType == STRUCTURE_EXTENSION){
-    energyAvailable += structure.energyCapacity;}});
+    energyAvailable += structure.energy;}});
 
     energymax += Game.spawns.Spawn1.energyCapacity;
     _.filter(Game.structures, function(structure){
@@ -72,10 +72,10 @@ function selectbody() {
     
 
 
-//console.log('Available energy:', energyAvailable);
+ console.log('Available energy:', energyAvailable);
 
 // Shows energy available to Spawn1 plus extensions
-if(maxenergyforparts >energymax)
+if(maxenergyforparts > energymax)
 {
      energyAvailable = energymax;   
 }else{
@@ -98,14 +98,14 @@ workcount = Math.floor(energyAvailable/workcost*workratio)+1;
         bodyparts.push(WORK);   
         
     var calccost = (carrycount*carrycost+movecount*movecost+workcount*workcost);
-//    console.log('cost:', calccost);
-//console.log('Available body:', bodyparts);
+console.log('cost:', calccost);
+console.log('Available body:', bodyparts);
   return bodyparts;
 }
 
 
 function selectrole() {
-    var maxminer    = 2;
+    var maxminer    = 3;
     var maxupgrader = 1;
     var maxprobe    = 3;
     // gather creep types in game. 
