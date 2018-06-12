@@ -42,7 +42,7 @@ exports.PlanRoom = function (spawn) {
 }
 
 function selectbody() {
-       var maxenergyforparts = 600;
+       var maxenergyforparts = 1000;
        
        var bodyparts = [];
        var carrycount = 0;
