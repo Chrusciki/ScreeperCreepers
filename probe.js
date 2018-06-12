@@ -15,13 +15,6 @@ var roleprobe = {
 	        creep.memory.building = true;
 	        creep.say('build');
 	    }
-	//    var buildtargets = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES,{
-	//	               filter: (structure) => {
-	 //                   return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_ROAD)}});
-	   /* var repairtargets = creep.pos.findClosestByRange(FIND_STRUCTURES,{
-		               filter: (structure) => {
-	                    return (structure.hitpoints < structure.hitsmax/2)}});
-*/
 
 		if(creep.memory.building) {
 	    var buildtargets = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES,{
@@ -38,24 +31,8 @@ var roleprobe = {
 	                }
 	            }
 	           else{
-	           	    // updated repair flag
-	               creep.memory.repairing=true;
-	               	// find all repair targets, and find the most hurt
-	               var repairtargets = creep.room.find(FIND_STRUCTURES, {
-                   filter: object => object.hits < object.hitsMax});
-                    repairtargets.sort((a,b) => a.hits - b.hits);
-
-
-                    //repair or move to repair target
-	                if(creep.repair(repairtargets[0]) == ERR_NOT_IN_RANGE) {
-	                    creep.moveTo(repairtargets[0], {visualizePathStyle: {stroke: '#ffffff'}});
-	                }
-	                else
-	                {
 	                    roleminer.run(creep);
-	                    creep.say('miner');
-	                }
-	                
+	                    creep.say('miner');                
 	            }
 		}
 	    else{
