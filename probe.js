@@ -26,7 +26,7 @@ var roleprobe = {
 	                creep.memory.repairing=false;
 	                //build a building
 	                if(creep.build(buildtargets) == ERR_NOT_IN_RANGE) {
-	                    creep.moveTo(buildtargets, {visualizePathStyle: {stroke: '#ffffff'}});
+						creep.moveTo(buildtargets, { visualizePathStyle: { stroke: '#ffffff' } }, { reusePath: 15 });
 	                    
 	                }
 	            }

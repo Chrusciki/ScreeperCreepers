@@ -20,7 +20,6 @@ module.exports.loop = function () {
         }
     }
  
-
     //create minions
     buildings.run(Game.spawns.Spawn1);
     if (Memory.roomplannerroadssources !=1){
@@ -29,7 +28,7 @@ module.exports.loop = function () {
     
 
     var towers = Game.spawns['Spawn1'].room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
-    console.log(towers.length);
+    console.log("number of towers", towers.length);
     for (var id in towers) {
         var tower = towers[id];
         buildings.tower(tower);
