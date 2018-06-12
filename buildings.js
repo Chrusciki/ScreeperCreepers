@@ -41,6 +41,24 @@ exports.PlanRoom = function (spawn) {
     }
 }
 
+exports.tower = function (tower) {
+    var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+    if (target) {
+        tower.attack(target);
+        console.log('Hostile:', targets);
+    }
+    else {
+         // find all repair targets, and find the most hurt
+        var repairtargets = tower.room.find(FIND_STRUCTURES, {
+            filter: object => object.hits < object.hitsMax
+        });
+        repairtargets.sort((a, b) => a.hits - b.hits);
+        //repair or move to repair target
+        tower.repair(repairtargets[0]);
+    }
+}
+
+
 function selectbody() {
        var maxenergyforparts = 1000;
        

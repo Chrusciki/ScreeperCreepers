@@ -19,14 +19,21 @@ module.exports.loop = function () {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
+ 
 
     //create minions
     buildings.run(Game.spawns.Spawn1);
     if (Memory.roomplannerroadssources !=1){
         buildings.PlanRoom();
     }
+    
 
-
+    var towers = Game.spawns['Spawn1'].room.find(FIND_MY_STRUCTURES, { filter: { structureType: STRUCTURE_TOWER } });
+    console.log(towers.length);
+    for (var id in towers) {
+        var tower = towers[id];
+        buildings.tower(tower);
+    }
 
     
    // buildings.placeroadsite(Game.spawns['Spawn1'].room,start,end);
