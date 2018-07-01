@@ -31,6 +31,10 @@ exports.PlanRoom = function (spawn) {
     var start = Game.spawns['Spawn1'];
     var end = Game.spawns['Spawn1'].room.find(STRUCTURE_CONTROLLER);
     var endpos = end[0].pos;
+    
+    incircle(start);
+    gidextensions(start, 4);
+
     for (var i = 0; i < end.length; i++) {
         planRoadsBetween(start, end[i]);
     }
@@ -171,6 +175,41 @@ function selectrole() {
     return temprole;
 }
 
+function gidextensions(center, dist) {
+
+    // incircle spawn
+    var tempposx = center.pos.x - dist;
+    var tempposy = center.pos.y - dist;
+    var i, j;
+    for (i = 0; i < dist + 1; i++) {
+        for (j = 0; j < dist + 1; j++) {
+            if (Memory.sites < 5 & center.room.createConstructionSite(tempposx, tempposy, STRUCTURE_ROAD) == 0) {
+                Memory.sites++;
+            }
+            tempposy += 2;
+        }
+        tempposx += 2;
+        tempposy = center.pos.y - dist;
+    }
+}
+
+function incircle(spawn) {
+
+    // incircle spawn
+    var tempposx = spawn.pos.x - 1;
+    var tempposy = spawn.pos.y - 1;
+    var i, j;
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            if (Memory.sites < 5 & spawn.room.createConstructionSite(tempposx, tempposy, STRUCTURE_ROAD) == 0) {
+                Memory.sites++;
+            }
+            tempposy += 1;
+        }
+        tempposx += 1;
+        tempposy = spawn.pos.y - 1;
+    }
+};
 
 function planRoadsBetween(start, end) {
     if (start.pos)
